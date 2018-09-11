@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+
+    <!-- Appenter\u3084Logger\u3067\u4f7f\u7528\u3059\u308b\u30d7\u30ed\u30d1\u30c6\u30a3\u3092\u5b9a\u7fa9\u3059\u308b -->
+    <Properties>
+        <Property name="loglayout">[%d{yyyy-MM-dd HH:mm:ss.SSS}], %-5p, %t, %c, %m%n</Property>
+    </Properties>
+
+    <!-- \u30ed\u30b0\u306e\u51fa\u529b\u5148\u3068\u51fa\u529b\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\u3092\u8a2d\u5b9a\u3059\u308b -->
+    <Appenders>
+    <Console name="stdout" target="SYSTEM_OUT">
+        <PatternLayout pattern="${loglayout}"/>
+    </Console>
+    <RollingFile name="rolling" fileName="/AplicationLog/Weighter/DebugLog.log" filePattern="/AplicationLog/Weighter/app-%d{yyyy-MM-dd}-%i.log">
+        <PatternLayout pattern="${loglayout}"/>
+        <Policies>
+            <OnStartupTriggeringPolicy />
+            <SizeBasedTriggeringPolicy size="1 MB" />
+            <TimeBasedTriggeringPolicy />
+        </Policies>
+        <DefaultRolloverStrategy max="10"/>
+    </RollingFile>
+    </Appenders>
+
+    <!-- \u30d1\u30c3\u30b1\u30fc\u30b8\u3054\u3068\u306bAppender\u3068\u30ed\u30b0\u30ec\u30d9\u30eb\u3092\u7d44\u307f\u5408\u308f\u305b\u308b -->
+    <Loggers>
+    <Logger name="util" level="info" additivity="false">
+        <AppenderRef ref="stdout"/>
+        <AppenderRef ref="rolling"/>
+    </Logger>
+    <Logger name="util" level="error" additivity="false">
+        <AppenderRef ref="stdout"/>
+        <AppenderRef ref="rolling"/>
+    </Logger>
+    </Loggers>
+</Configuration>
