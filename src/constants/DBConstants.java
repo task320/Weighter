@@ -16,6 +16,6 @@ public final class DBConstants {
 
 	public static final String DRIVER_CLASS = "org.postgresql.Driver";
 	public static final String JDBC_URL = "jdbc:postgresql://127.0.0.1:5432/weighter";
-	public static final String DB_USER = "postgres";
-	public static final String DB_PASS = "Sayonara_51";
+	public static final String DB_USER = "user";
+	public static final String DB_PASS = "password";
 }
